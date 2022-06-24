@@ -20,7 +20,10 @@ class Specialist
     private $lastName;
 
     #[ORM\Column(type: 'boolean')]
-    private $online;
+    private $online = false;
+
+    #[ORM\Column(type: 'boolean')]
+    private $active = true;
 
     public function getId(): ?int
     {
@@ -59,6 +62,18 @@ class Specialist
     public function setOnline(bool $online): self
     {
         $this->online = $online;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

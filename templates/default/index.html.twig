@@ -3,5 +3,22 @@
 {% block title %}Hello DefaultController!{% endblock %}
 
 {% block body %}
-
+    <div class="container mt-4">
+        <div class="row">
+            {% for specialist in specialists %}
+                <div class="col-lg-3">
+                    <div class="text-center card-box">
+                        <div class="member-card pt-2 pb-2">
+                            <div class="thumb-lg member-thumb mx-auto"><img src="{{ asset('build/avatar.png') }}" class="rounded-circle img-thumbnail" alt="profile-image"></div>
+                            <div class="">
+                                <h4>{{ specialist.firstName }}</h4>
+                                <small>{{ specialist.online ? "En ligne" : "Hors ligne" }}</small>
+                            </div>
+                            <a class="btn btn-primary" href="#">Appeler</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
