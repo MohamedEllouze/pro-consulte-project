@@ -44,6 +44,10 @@ Travail demandé :
 
 - [ ] Afficher la liste des appels (date, psycholgue) dans l'admin
 
+- [ ] Créer une entité Mail (date, subject, content)
+
+- [ ] Créer un Service qui créé une nouvelle ligne Mail en base de données quand un psychologue est ajouté via le formulaire d'administration (Utiliser les events Doctrine)
+
 ## Rendu ##
 
 Créer un repo public github. Y mettre votre projet et inviter l'utilisateur bastien-pcg
