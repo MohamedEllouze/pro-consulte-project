@@ -3,7 +3,8 @@
 Test technique de Pros-Consulte.
 
 ## Installation ##
-
+ 
+```
 git clone https://github.com/pros-consulte/test-technique.git
 
 composer install
@@ -17,6 +18,7 @@ symfony console doctrine:migration:migrate
 symfony console doctrine:fixtures:load
 
 symfony serve
+```
 
 ## Test technique ##
 
@@ -39,3 +41,11 @@ Travail demandé :
 - [ ] Sur la page d'accueil, au clique sur Appeler, créer une nouvelle ligne d'Appel en base de données
 
 - [ ] Afficher la liste des appels (date, psycholgue) dans l'admin
+
+## Rendu ##
+
+Créer un repo public github. Y mettre votre projet et inviter l'utilisateur bastien-pcg
+
+## Analyse ##
+
+La qualité du code, les tests et les bonnes pratiques seront prises en compte pour l'évaluation du projet.
