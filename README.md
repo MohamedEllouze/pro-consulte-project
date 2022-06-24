@@ -34,7 +34,7 @@ Travail demandé :
 
 - [ ] Dans l'espace admin, afficher la liste des psychologues et créer un formulaire pour ajouter un psychologue
 
-- [ ] Créer une entité Appel (champs date, specialist)
+- [ ] Créer une entité Appel: date (datetime), specialist (ManyToOne)
 
 - [ ] Sur la page d'accueil, au clique sur Appeler, créer une nouvelle ligne d'Appel en base de données
 
