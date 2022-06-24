@@ -17,6 +17,8 @@ symfony console doctrine:migration:migrate
 
 symfony console doctrine:fixtures:load
 
+yarn watch
+
 symfony serve
 ```
 
