@@ -50,7 +50,7 @@ Travail demandé :
 
 ## Rendu ##
 
-Créer un repo public github. Y mettre votre projet et inviter l'utilisateur bastien-pcg
+Créer un repo github. Y mettre votre projet et inviter l'utilisateur bastien-pcg
 
 ## Analyse ##
 
