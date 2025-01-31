@@ -21,7 +21,7 @@ class AdminController extends AbstractController
     {
         return $this->render('specialist/index.html.twig', [
             'specialists' => $specialistRepository->orderByStates(),
-            'appels' => $appelRepository->findAll(),
+            'appels' => $appelRepository->findAllWithSpecialists(),
 
         ]);
     }

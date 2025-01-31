@@ -18,7 +18,7 @@ class Appel
 
     #[ORM\ManyToOne(targetEntity: Specialist::class, inversedBy: 'appels')]
     #[ORM\JoinColumn(nullable: false)]
-    private $speclialist;
+    private $specialist;
 
     public function getId(): ?int
     {
@@ -37,15 +37,13 @@ class Appel
         return $this;
     }
 
-    public function getSpeclialist(): ?Specialist
+    public function getSpecialist(): ?Specialist
     {
-        return $this->speclialist;
+        return $this->specialist;
     }
-
-    public function setSpeclialist(?Specialist $speclialist): self
+    public function setSpecialist(?Specialist $specialist): self
     {
-        $this->speclialist = $speclialist;
-
+        $this->specialist = $specialist;
         return $this;
     }
 }

@@ -13,7 +13,7 @@
                 {% for appel in appels %}
                     <tr>
                         <td>{{ appel.id }}</td>
-                        {# <td>{{ appel.specialist.firstName }} {{ appel.specialist.lastName }}</td> #}
+                        <td>{{ appel.specialist.firstName }} {{ appel.specialist.lastName }}</td>
                         <td>{{ appel.date|date('d/m/Y H:i:s') }}</td>
                     </tr>
                 {% else %}

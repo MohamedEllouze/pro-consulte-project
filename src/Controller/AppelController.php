@@ -26,7 +26,7 @@ class AppelController extends AbstractController
 
         $appel = new Appel();
         $appel->setDate(new \DateTime());
-        $appel->setSpeclialist($specialist);
+        $appel->setSpecialist($specialist);
         $em->persist($appel);
         $em->flush();
 

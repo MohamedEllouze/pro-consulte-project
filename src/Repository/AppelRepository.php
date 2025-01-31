@@ -54,13 +54,12 @@ class AppelRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Appel
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findAllWithSpecialists()
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('a.specialist', 's')
+            ->addSelect('s')
+            ->getQuery()
+            ->getResult();
+    }
 }
