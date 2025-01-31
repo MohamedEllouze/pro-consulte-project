@@ -1,0 +1,27 @@
+{% block body %}
+    <div class="container mt-4">
+        <h2>Liste des Appels</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Spécialiste</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appel in appels %}
+                    <tr>
+                        <td>{{ appel.id }}</td>
+                        {# <td>{{ appel.specialist.firstName }} {{ appel.specialist.lastName }}</td> #}
+                        <td>{{ appel.date|date('d/m/Y H:i:s') }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center">Aucun appel enregistré.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

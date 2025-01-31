@@ -1,0 +1,18 @@
+{% block form_row %}
+    <div class="mb-3">
+        {{ form_label(form) }}
+        <div class="col-sm-12">
+            {{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}
+
+{% block form_label %}
+    <label class="form-label">{{ label }}</label>
+{% endblock %}
+
+{% block form_widget %}
+    {% set class = (attr.class is defined ? attr.class ~ ' ' : '') ~ 'form-control' %}
+    {{ block('input_widget', { attr: attr|merge({'class': class}) }) }}
+{% endblock %}

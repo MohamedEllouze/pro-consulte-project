@@ -1,0 +1,58 @@
+{% block body %}
+  <div class="container mt-4">
+        <div class="row">
+            {% if is_granted('ROLE_ADMIN') %}
+                <div class="col-lg-3" style=" display:flex ; align-items:center; justify-content:center">
+                    <div class="text-center card-box">
+                        <div class="member-card pt-2 pb-2" id="card">
+                            <a  class="btn btn-primary"  href={{ path('admin_add_specialist' ) }} >Ajouter un specialist</a>
+                        </div>
+                    </div>
+                </div>   
+            {% endif %}
+            {% for specialist in specialists %}
+                <div class="col-lg-3">
+                    <div class="text-center card-box">
+                        <div class="member-card pt-2 pb-2">
+                            <div class="thumb-lg member-thumb mx-auto"><a href={{ path('specialist_details', {id:specialist.id} ) }} ><img src="{{ asset('build/avatar.png') }}" class="rounded-circle img-thumbnail" alt="profile-image"></a></div>
+                            <div class="">
+                                <h4>{{ specialist.firstName }}</h4>
+                                <small>{{ specialist.online ? "En ligne" : "Hors ligne" }}</small>
+                            </div>
+                            <button class="btn btn-primary appel-btn" data-id="{{ specialist.id }}">Appeler</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% block script %}
+        <script>
+            document.querySelectorAll(".appel-btn").forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault(); // Prevent default action
+                    
+                    let specialistId = this.getAttribute("data-id"); // Get the ID from the data attribute
+                    
+                    fetch("{{ path('add_appel') }}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            "X-CSRF-TOKEN": "{{ csrf_token('add_appel') }}"
+                        },
+                        body: new URLSearchParams({ id: specialistId })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert("Appel ajouté avec succès !");
+                        } else {
+                            alert("Erreur lors de l'ajout de l'appel.");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+                });
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

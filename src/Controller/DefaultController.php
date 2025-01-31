@@ -13,7 +13,7 @@ class DefaultController extends AbstractController
     public function index(SpecialistRepository $specialistRepository): Response
     {
         return $this->render('default/index.html.twig', [
-            'specialists' => $specialistRepository->findAll(),
+            'specialists' => $specialistRepository->orderByStates(),
         ]);
     }
 }
