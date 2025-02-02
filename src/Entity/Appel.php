@@ -11,21 +11,21 @@ class Appel
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'datetime')]
-    private $date;
+    private \DateTimeInterface $date;
 
     #[ORM\ManyToOne(targetEntity: Specialist::class, inversedBy: 'appels')]
     #[ORM\JoinColumn(nullable: false)]
-    private $specialist;
+    private Specialist $specialist;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): \DateTimeInterface
     {
         return $this->date;
     }
@@ -37,13 +37,14 @@ class Appel
         return $this;
     }
 
-    public function getSpecialist(): ?Specialist
+    public function getSpecialist(): Specialist
     {
         return $this->specialist;
     }
-    public function setSpecialist(?Specialist $specialist): self
+    public function setSpecialist(Specialist $specialist): self
     {
         $this->specialist = $specialist;
+
         return $this;
     }
 }

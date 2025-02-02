@@ -5,7 +5,7 @@
                 <div class="col-lg-3" style=" display:flex ; align-items:center; justify-content:center">
                     <div class="text-center card-box">
                         <div class="member-card pt-2 pb-2" id="card">
-                            <a  class="btn btn-primary"  href={{ path('admin_add_specialist' ) }} >Ajouter un specialist</a>
+                            <a  class="btn btn-primary"  href={{ path('add_specialist' ) }} >Ajouter un specialist</a>
                         </div>
                     </div>
                 </div>   
@@ -30,9 +30,9 @@
         <script>
             document.querySelectorAll(".appel-btn").forEach(button => {
                 button.addEventListener("click", function (event) {
-                    event.preventDefault(); // Prevent default action
+                    event.preventDefault(); 
                     
-                    let specialistId = this.getAttribute("data-id"); // Get the ID from the data attribute
+                    let specialistId = this.getAttribute("data-id");
                     
                     fetch("{{ path('add_appel') }}", {
                         method: "POST",

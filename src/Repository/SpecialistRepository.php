@@ -39,25 +39,25 @@ class SpecialistRepository extends ServiceEntityRepository
         }
     }
 
-   /**
-    * @return Specialist[] Returns an array online specialist
-    */
-   public function orderByStates(): array
-   {
-       return $this->createQueryBuilder('s')
-           ->orderBy('s.online', 'DESC')
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+    /**
+     * @return Specialist[] Returns an array online specialist
+     */
+    public function findAllOrdredByState(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.online', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
-//    public function findOneBySomeField($value): ?Specialist
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Specialist
+    //    {
+    //        return $this->createQueryBuilder('s')
+    //            ->andWhere('s.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

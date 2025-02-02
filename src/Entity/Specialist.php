@@ -13,34 +13,35 @@ class Specialist
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $firstName;
+    private string $firstName;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $lastName;
+    private string $lastName;
 
     #[ORM\Column(type: 'boolean')]
-    private $online = false;
+    private bool $online = false;
 
     #[ORM\Column(type: 'boolean')]
-    private $active = true;
+    private bool $active = true;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $description;
+    private ?string $description;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $mobile;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $email;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $mobile;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $email;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $city;
+    private ?string $city;
 
     #[ORM\OneToMany(mappedBy: 'speclialist', targetEntity: Appel::class, orphanRemoval: true)]
-    private $appels;
+    /** @var Appel[] */
+    private Collection $appels;
 
     public function __construct()
     {
@@ -52,7 +53,7 @@ class Specialist
         return $this->id;
     }
 
-    public function getFirstName(): ?string
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -64,7 +65,7 @@ class Specialist
         return $this;
     }
 
-    public function getLastName(): ?string
+    public function getLastName(): string
     {
         return $this->lastName;
     }
@@ -76,7 +77,7 @@ class Specialist
         return $this;
     }
 
-    public function isOnline(): ?bool
+    public function isOnline(): bool
     {
         return $this->online;
     }
@@ -88,7 +89,7 @@ class Specialist
         return $this;
     }
 
-    public function isActive(): ?bool
+    public function isActive(): bool
     {
         return $this->active;
     }
@@ -112,24 +113,24 @@ class Specialist
         return $this;
     }
 
-    public function getMobile(): ?string
+    public function getMobile(): string
     {
         return $this->mobile;
     }
 
-    public function setMobile(?string $mobile): self
+    public function setMobile(string $mobile): self
     {
         $this->mobile = $mobile;
 
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function setEmail(?string $email): self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -148,9 +149,6 @@ class Specialist
         return $this;
     }
 
-    /**
-     * @return Collection<int, Appel>
-     */
     public function getAppels(): Collection
     {
         return $this->appels;
@@ -160,19 +158,7 @@ class Specialist
     {
         if (!$this->appels->contains($appel)) {
             $this->appels[] = $appel;
-            $appel->setSpeclialist($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAppel(Appel $appel): self
-    {
-        if ($this->appels->removeElement($appel)) {
-            // set the owning side to null (unless already changed)
-            if ($appel->getSpeclialist() === $this) {
-                $appel->setSpeclialist(null);
-            }
+            $appel->setSpecialist($this);
         }
 
         return $this;

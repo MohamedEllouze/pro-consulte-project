@@ -11,16 +11,16 @@ class Mail
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'datetime')]
-    private $date;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $subject;
+    private \DateTimeInterface $date;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $content;
+    private string $subject;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $content;
 
     public function getId(): ?int
     {
@@ -39,19 +39,19 @@ class Mail
         return $this;
     }
 
-    public function getSubject(): ?string
+    public function getSubject(): string
     {
         return $this->subject;
     }
 
-    public function setSubject(?string $subject): self
+    public function setSubject(string $subject): self
     {
         $this->subject = $subject;
 
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent(): string
     {
         return $this->content;
     }

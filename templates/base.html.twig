@@ -26,8 +26,17 @@
     <header>
         <div class="navbar navbar-dark bg-dark box-shadow">
             <div class="container d-flex justify-content-between">
-                <a href="#" class="navbar-brand d-flex align-items-center"><strong>Pros-Consulte</strong>
+                <a  href={{ path('home_page') }} class="navbar-brand d-flex align-items-center"><strong>Pros-Consulte</strong>
                 </a>
+                {% if app.user  %}
+                    <a href={{ path('app_logout') }} class="btn btn-primary" >
+                        logout
+                    </a>
+                {% else %}
+                    <a href={{ path('app_login') }} class="btn btn-primary" >
+                        login
+                    </a>
+                {% endif %}
             </div>
         </div>
     </header>
