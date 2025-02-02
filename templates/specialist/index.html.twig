@@ -23,6 +23,11 @@
         {% endif %}
         <div class="tab-content mt-3">
             <div class="tab-pane fade show active" id="specialists">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="member-card pt-2 pb-2 d-flex justify-content-end" id="card">
+                        <a class="btn btn-primary" href="{{ path('add_specialist') }}">Ajouter un specialist</a>
+                    </div>
+                {% endif %}
                 {% include 'specialist/_specialists_list.html.twig' with { 'specialists': specialists } %}
             </div>
             {% if is_granted('ROLE_ADMIN') %}

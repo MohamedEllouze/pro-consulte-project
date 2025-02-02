@@ -6,6 +6,7 @@ use App\Entity\Specialist;
 use App\Form\SpecialistFormType;
 use App\Repository\SpecialistRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,6 +36,7 @@ class SpecialistController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/add', name: 'add_specialist')]
     public function addSpecialist(Request $request, EntityManagerInterface $em): Response
     {

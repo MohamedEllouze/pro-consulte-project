@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Appel;
 use App\Entity\Specialist;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,6 +34,7 @@ class AppelController extends AbstractController
         return new JsonResponse(['success' => true, 'message' => 'Appel ajouté avec succès !']);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/list', name: 'list_appels')]
     public function listAppels(EntityManagerInterface $em): Response
     {
